@@ -253,17 +253,3 @@ class NeighborhoodScraper:
 
        
 
-# if __name__ == "__main__":
-#     google_sheet_url = 'https://docs.google.com/spreadsheets/d/1nCBBF7Fh141aTi4TRiyU7wt32Mmf8gdSF4J5InWvlog/edit?gid=0#gid=0'
-#     google_sheet_credentials = "GOOGLE_SHEET_CREDENTIALS"
-
-#     scraper = NeighborhoodScraper(
-#         base_url= 'https://www.niche.com/places-to-live/search/best-neighborhoods/t/chicago-cook-il/' + '?page={}',
-#         redfin_url= 'https://www.redfin.com/city/16657/TX/San-Antonio/housing-market',
-#         google_sheet_url= google_sheet_url,
-#         google_sheet_credentials= google_sheet_credentials,  
-#         sheetname= 'Testsheet2',
-#     )
-#     scraper.scrape()
-#     print("Scraping completed.")
-   
