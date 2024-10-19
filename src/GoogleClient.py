@@ -128,23 +128,4 @@ class GoogleSheetClient:
     
 
 
-# Example usage in your scraper
-# if __name__ == "__main__":
-    # Create a GoogleSheetClient instance
-    # google_sheet_url = 'https://docs.google.com/spreadsheets/d/1nCBBF7Fh141aTi4TRiyU7wt32Mmf8gdSF4J5InWvlog/edit?gid=0#gid=0'
-    # gs= GoogleSheetClient("GOOGLE_SHEET_CREDENTIALS", google_sheet_url, "Data")
-# 
-    # gs.create_new_sheet('TestSheet')
 
-
-    # gs.delete_rows([4, 5])
-    # last_index= gs.get_last_index()
-    # print('Last Index:', last_index)
-
-    # Get the first row of the sheet
-    # first_row = gs.get_headers(2)  # Fetch the second row, for example
-    # print("HEADERS:", first_row)
-
-    # Add a new row with scraped data
-    # scraped_data = ['John Doe', 'example@example.com', '12345']
-    # google_sheet_client.add_row(scraped_data)
