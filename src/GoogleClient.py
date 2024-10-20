@@ -28,6 +28,7 @@ class GoogleSheetClient:
             self.sheet = self.spreadsheet.worksheet(sheet_name)
 
 
+
     def get_headers(self, row_number=2):
         try:
 
@@ -46,6 +47,7 @@ class GoogleSheetClient:
             print('Error getting headers:', e)
 
 
+
     def get_last_index(self):
         """
         Get the last index from the `#` column, which is the first column.
@@ -57,6 +59,7 @@ class GoogleSheetClient:
             return 0  # If there are no rows, start from 0
 
 
+
     def add_row(self, row_data):
         try:
             # Append a new row to the sheet with the scraped data
@@ -64,6 +67,8 @@ class GoogleSheetClient:
             print(f"Row added: {row_data}")
         except Exception as e:
             print('Error updating row data:',e)
+
+
 
     def delete_rows(self, row_numbers):
         try:
@@ -129,3 +134,4 @@ class GoogleSheetClient:
 
 
 
+    

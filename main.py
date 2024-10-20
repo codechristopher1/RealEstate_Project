@@ -69,7 +69,7 @@ def main():
                 google_sheet_url= google_sheet_url,
                 google_sheet_credentials= google_sheet_credentials,  
                 sheetname= sheetname,
-                pages_to_scrape=6
+        
             )
             scraper.scrape()
             print("Scraping completed.")

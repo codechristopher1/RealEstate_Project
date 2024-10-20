@@ -46,7 +46,8 @@ class RedFinScraper:
         try:
             result = html.xpath(sel)
             text = result[0] if result else None
-            return text
+            if text:
+                return self.clean_data(text)
         except AttributeError:
             return None
 
@@ -55,10 +56,30 @@ class RedFinScraper:
         """Clean the extracted text data."""
         try:
             if value:
-                return value.strip()
+                return value.strip().replace(' pt', '')
             return None
         except Exception as e:
             print('Error cleaning data:', e)
+
+
+    def clean_data_days(value):
+    """
+    Clean the extracted text data to retrieve the last meaningful part.
+    For example, 'The average homes sell for about 3% below list price and go pending in around 42 days.'
+    will return '42 days'.
+    """
+    if value:
+        # Strip leading/trailing spaces
+        value = value.strip()
+        
+        # Use regex to find the last occurrence of a number followed by 'days'
+        match = re.search(r'(\d+ days)', value)
+        
+        if match:
+            return match.group(1)
+    
+    return None
+
 
 
     def parse_page(self, html):

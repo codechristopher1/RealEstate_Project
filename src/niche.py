@@ -217,7 +217,7 @@ class NeighborhoodScraper:
     
                     last_index = self.gs.get_last_index()
                     if last_index == 0:
-                        last_index = 1
+                        last_index = 0
                     else:
                         last_index += 1
     
