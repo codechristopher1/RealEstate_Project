@@ -110,11 +110,3 @@ class RedFinScraper:
             print(f"Failed to get HTML")
 
        
-   
-
-
-
-
-# if __name__ == "__main__":
-    # scraper= RedFinScraper('https://www.redfin.com/city/30794/TX/Dallas/housing-market')
-    # print(scraper.scrape())
