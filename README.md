@@ -21,7 +21,7 @@ Main.py:
   This script allows user to perform two main tasks:
 
 -Create a new Google Sheet with pre-defined headers.
--Scrape data from a website and update an existing Google Sheet with the scraped information.
+-Scrape data from website and update an existing Google Sheet with the scraped information.
 -Exit the program.
 
 The user can choose between creating a new sheet or running a scraper that extracts neighborhood information from a specified URL or Exit the program. 
@@ -36,10 +36,10 @@ Exit: Exit the program.
 
 """
 ### Features
-- niche.py: Handles scraping neighborhood-related data 'from' the provided niche URL.
-- Redfin.py:
-- GoogleClient.py: Manages interactions 'with' Google Sheets.
-- main.py: Responsible 'for' the execution 'and' control of the entire program.  
+- niche.py: Handles scraping neighborhood-related data from the provided niche URL.
+- Redfin.py: Handles scraping market data from the provided niche URL
+- GoogleClient.py: Manages interactions with Google Sheets.
+- main.py: Responsible 'for' the execution and control of the entire program.  
 
 ### Requirements
 - **Python 3.10+**
@@ -51,6 +51,7 @@ Exit: Exit the program.
 Explains how to set up the project/program:
 1. **Download** the project files.
 2. Open a terminal and **navigate** to the project folder: cd project_folder_name
-3. Create a virtual environment with this command: python -m venv venv  
-4. Install the required libraries/dependencies by running on your terminal: pip install -r requirements.txt
-5. **Run the program** with command: python main.py
+3. Create a virtual environment with this command: python -m venv venv 
+4. Save Googlesheet credentials.json file to Environment varieble: setx GOOGLE_SHEET_CREDENTIALS   "C:/{your_path}/{your_path}/Niche/credentials.json".
+5. Install the required libraries/dependencies by running on your terminal: pip install -r requirements.txt
+6. **Run the program** with command: python main.py

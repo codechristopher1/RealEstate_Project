@@ -1,4 +1,5 @@
 import time
+import re
 from lxml import etree
 from rich import print
 from dataclasses import asdict, dataclass
@@ -62,23 +63,18 @@ class RedFinScraper:
             print('Error cleaning data:', e)
 
 
-    def clean_data_days(value):
-    """
-    Clean the extracted text data to retrieve the last meaningful part.
-    For example, 'The average homes sell for about 3% below list price and go pending in around 42 days.'
-    will return '42 days'.
-    """
-    if value:
-        # Strip leading/trailing spaces
-        value = value.strip()
+    def clean_data_days(self, value):
+        if value:
+            # Strip leading/trailing spaces
+            value = value.strip()
+            
+            # Use regex to find the last occurrence of a number followed by 'days'
+            match = re.search(r'(\d+ days)', value)
+            
+            if match:
+                return match.group(1)
         
-        # Use regex to find the last occurrence of a number followed by 'days'
-        match = re.search(r'(\d+ days)', value)
-        
-        if match:
-            return match.group(1)
-    
-    return None
+        return None
 
 
 
@@ -94,7 +90,7 @@ class RedFinScraper:
             YOY_Growth=self.extract_text(html, '(//div[@class="yoyChange font-b1 pct-up"]/text())[1]'),
             sale_to_list_price=self.extract_text(html, '//div[contains(text(),"Sale-to-List Price")]/following-sibling::div/div[@class="value"]/text()'),
             avg_home_sale=self.extract_text(html, '//div[contains(text(), "Sale-to-List Price")]/following-sibling::div/div/following-sibling::div/text()'),
-            Days_to_pending= self.extract_text(html, '(//ul[@class="details"]/li[2]/span//text())[4]'),
+            Days_to_pending= self.clean_data_days(self.extract_text(html, '(//ul[@class="details"]/li[2]/span//text())[4]'))
             
         )
         return asdict(new_item)
@@ -116,3 +112,9 @@ class RedFinScraper:
        
    
 
+
+
+
+# if __name__ == "__main__":
+    # scraper= RedFinScraper('https://www.redfin.com/city/30794/TX/Dallas/housing-market')
+    # print(scraper.scrape())
