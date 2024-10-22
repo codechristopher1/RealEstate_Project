@@ -225,7 +225,7 @@ class NeighborhoodScraper:
                         last_index += 1
     
     
-                    for link in links[:1]: 
+                    for link in links: 
                         print('processing Link....')
                         print(f'Getting page Details from Link: {link}...')
                         page_html = self.get_html(link)
