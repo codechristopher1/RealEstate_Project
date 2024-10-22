@@ -4,6 +4,8 @@ from lxml import etree
 from rich import print
 from dataclasses import asdict, dataclass
 from curl_cffi import requests as cureq
+from dotenv import load_dotenv
+import os
 
 
 @dataclass
@@ -28,8 +30,9 @@ class RedFinScraper:
 
     def get_html(self, url):
         """Send request and get the HTML body as response."""
+        load_dotenv()
         try:
-            resp = cureq.get(url, impersonate='chrome')
+            resp = cureq.get(url, impersonate='chrome', proxy=os.getenv("PROXY"))
             resp.raise_for_status()
             html = etree.HTML(resp.content)
             return html
@@ -109,4 +112,4 @@ class RedFinScraper:
         else:
             print(f"Failed to get HTML")
 
-       
+

@@ -6,6 +6,8 @@ from curl_cffi import requests as cureq
 from headers import HEADER_TO_FIELD_MAP, MergedItem
 from GoogleClient import GoogleSheetClient
 from Redfin import RedFinScraper
+from dotenv import load_dotenv
+import os
 
 
 @dataclass
@@ -52,8 +54,9 @@ class NeighborhoodScraper:
 
     def get_html(self, url):
         """Send request and get the HTML body as response."""
+        load_dotenv()
         try:
-            resp = cureq.get(url, impersonate='chrome')
+            resp = cureq.get(url, impersonate='chrome', proxy=os.getenv("PROXY"))
             resp.raise_for_status()
             html = etree.HTML(resp.content)
             return html
@@ -222,7 +225,7 @@ class NeighborhoodScraper:
                         last_index += 1
     
     
-                    for link in links: 
+                    for link in links[:1]: 
                         print('processing Link....')
                         print(f'Getting page Details from Link: {link}...')
                         page_html = self.get_html(link)
